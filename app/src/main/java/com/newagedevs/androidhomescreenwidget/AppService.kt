@@ -9,7 +9,7 @@ import android.widget.RemoteViews
 import java.util.*
 
 
-class UpdateService : Service() {
+class AppService : Service() {
 
     override fun onBind(intent: Intent): IBinder? {
         return null
@@ -28,4 +28,6 @@ class UpdateService : Service() {
         manager.updateAppWidget(theWidget, view)
         return super.onStartCommand(intent, flags, startId)
     }
+
+    
 }

@@ -23,7 +23,7 @@
                 android:resource="@xml/app_widget_info" />
         </receiver>
 
-        <service android:name=".UpdateService" />
+        <service android:name=".AppService" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
