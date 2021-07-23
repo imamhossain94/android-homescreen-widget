@@ -13,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidHomescreenWidget">
 
+
+
         <receiver android:name=".AppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -23,7 +25,17 @@
                 android:resource="@xml/app_widget_info" />
         </receiver>
 
-        <service android:name=".AppService" />
+        <service
+            android:name=".AppService"
+            android:enabled="true" />
+
+        <receiver android:name=".AutoStart">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+
 
         <activity android:name=".MainActivity">
             <intent-filter>

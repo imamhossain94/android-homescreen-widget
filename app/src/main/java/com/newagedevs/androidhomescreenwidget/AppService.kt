@@ -29,5 +29,5 @@ class AppService : Service() {
         return super.onStartCommand(intent, flags, startId)
     }
 
-    
+
 }
