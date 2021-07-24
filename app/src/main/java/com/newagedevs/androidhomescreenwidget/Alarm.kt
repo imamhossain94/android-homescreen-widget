@@ -38,9 +38,13 @@ class Alarm : BroadcastReceiver() {
 
         val view = RemoteViews("com.newagedevs.androidhomescreenwidget", R.layout.app_widget)
 
+
+        val pending = PendingIntent.getActivity(context, 0, Intent(context, MainActivity::class.java), 0)
+
+
+
         view.setTextViewText(R.id.textView, lastUpdate + Calendar.getInstance().time.toString().subSequence(10, 19))
-        view.setOnClickPendingIntent(R.id.textView,
-            PendingIntent.getService(context, 0, Intent(context, MainActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT))
+        view.setOnClickPendingIntent(R.id.textView, pending)
 
         val theWidget = ComponentName(context, AppWidget::class.java)
         val manager = AppWidgetManager.getInstance(context)
@@ -60,7 +64,7 @@ class Alarm : BroadcastReceiver() {
             System.currentTimeMillis(),
             //60000,
             //(1000 * 60 * 2).toLong(),
-            60000,
+            180000,
             pi
         ) // Millisec * Second * Minute
 
