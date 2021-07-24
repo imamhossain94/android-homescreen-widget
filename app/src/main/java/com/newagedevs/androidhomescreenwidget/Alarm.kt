@@ -2,26 +2,49 @@ package com.newagedevs.androidhomescreenwidget
 
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.appwidget.AppWidgetManager
 import android.content.BroadcastReceiver
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.PowerManager
 import android.os.SystemClock
+import android.widget.RemoteViews
 import android.widget.Toast
+import java.util.*
+
 
 
 class Alarm : BroadcastReceiver() {
 
     private var service: PendingIntent? = null
 
+
     override fun onReceive(context: Context, intent: Intent) {
         val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
-        val wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "app:xyz")
+        val wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "PeriSecure:MyWakeLock")
         wl.acquire()
 
         // Put here YOUR code.
 
-        context.startService(Intent(context, YourService::class.java))
+        //context.startService(Intent(context, YourService::class.java))
+
+
+
+        val random = Random()
+        val randomInt = random.nextInt(60000)
+        val lastUpdate = "R: $randomInt"
+        // Reaches the view on widget and displays the number
+
+        val view = RemoteViews("com.newagedevs.androidhomescreenwidget", R.layout.app_widget)
+
+        view.setTextViewText(R.id.textView, lastUpdate + Calendar.getInstance().time.toString().subSequence(10, 19))
+        view.setOnClickPendingIntent(R.id.textView,
+            PendingIntent.getService(context, 0, Intent(context, MainActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT))
+
+        val theWidget = ComponentName(context, AppWidget::class.java)
+        val manager = AppWidgetManager.getInstance(context)
+        manager.updateAppWidget(theWidget, view)
 
 
         Toast.makeText(context, "Alarm !!!!!!!!!!", Toast.LENGTH_LONG).show() // For example
@@ -36,7 +59,8 @@ class Alarm : BroadcastReceiver() {
             AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis(),
             //60000,
-            (1000 * 60 * 2).toLong(),
+            //(1000 * 60 * 2).toLong(),
+            60000,
             pi
         ) // Millisec * Second * Minute
 
