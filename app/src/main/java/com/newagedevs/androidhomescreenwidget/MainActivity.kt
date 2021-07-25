@@ -12,6 +12,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Alarm().setAlarm(this);
+        AlarmBroadcastReceiver().setAlarm(this);
     }
 }
