@@ -9,9 +9,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.PowerManager
 import android.widget.RemoteViews
-import android.widget.Toast
-import java.util.*
-
 
 
 class AlarmBroadcastReceiver : BroadcastReceiver() {
@@ -23,38 +20,21 @@ class AlarmBroadcastReceiver : BroadcastReceiver() {
             this.setAlarm(context)
         }
 
-
-        val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
-        val wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "PeriSecure:MyWakeLock")
-        wl.acquire(10*60*1000L /*10 minutes*/)
+        val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
+        val wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "PeriSecure:MyWakeLock")
+        wakeLock.acquire(10*60*1000L /*10 minutes*/)
 
         // Put here YOUR code.
+        updateAppWidget(context)
 
-        val random = Random()
-        val randomInt = random.nextInt(60000)
-        val lastUpdate = "R: $randomInt"
-        val view = RemoteViews("com.newagedevs.androidhomescreenwidget", R.layout.app_widget)
-        val pending = PendingIntent.getActivity(context, 0, Intent(context, MainActivity::class.java), 0)
-        view.setTextViewText(R.id.widget_current_update, lastUpdate + Calendar.getInstance().time.toString().subSequence(10, 19))
-        view.setOnClickPendingIntent(R.id.widget_current_update, pending)
-        val theWidget = ComponentName(context, AppWidget::class.java)
-        val manager = AppWidgetManager.getInstance(context)
-        manager.updateAppWidget(theWidget, view)
-
-        Toast.makeText(context, "Alarm Received", Toast.LENGTH_LONG).show() // For example
-        wl.release()
+        wakeLock.release()
     }
 
     fun setAlarm(context: Context) {
-        val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val i = Intent(context, AlarmBroadcastReceiver::class.java)
-        val pi = PendingIntent.getBroadcast(context, 0, i, 0)
-        am.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            System.currentTimeMillis(),
-            (1000 * 60 * 1).toLong(),
-            pi
-        )
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, AlarmBroadcastReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,System.currentTimeMillis(), (1000 * 60 * 1).toLong(), pendingIntent)
     }
 
     fun cancelAlarm(context: Context) {
@@ -62,6 +42,27 @@ class AlarmBroadcastReceiver : BroadcastReceiver() {
         val sender = PendingIntent.getBroadcast(context, 0, intent, 0)
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(sender)
+    }
+
+
+    private fun updateAppWidget(context: Context) {
+
+        val views = RemoteViews(context.packageName, R.layout.app_widget)
+
+        views.setTextViewText(R.id.widget_last_update, PrefManager(context).getLastUpdate())
+        views.setTextViewText(R.id.widget_update_type, "Auto")
+        views.setTextViewText(R.id.widget_current_update, getCurrentTime())
+        views.setTextViewText(R.id.widget_total_manual_update,  PrefManager(context).getManualUpdate().toString())
+        views.setTextViewText(R.id.widget_total_auto_update,  PrefManager(context).getAutoUpdate().toString())
+
+        PrefManager(context).setLastUpdate(PrefManager(context).getCurrentUpdate())
+        PrefManager(context).setCurrentUpdate(getCurrentTime())
+        PrefManager(context).setAutoUpdate()
+
+        showSimpleNotification(context, "Auto Update", "Home Screen Widget Auto Updated at ${getCurrentTime()}")
+
+        AppWidgetManager.getInstance(context).updateAppWidget(ComponentName(context, AppWidget::class.java), views)
+
     }
 
 }
