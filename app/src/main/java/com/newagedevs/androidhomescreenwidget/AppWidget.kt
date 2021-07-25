@@ -11,11 +11,8 @@ import android.widget.RemoteViews
 
 class AppWidget : AppWidgetProvider() {
 
-
-
     private val menuClick = "menuClick"
     private val manualUpdateClick = "manualUpdateClick"
-
 
 
     override fun onUpdate(

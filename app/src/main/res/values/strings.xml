@@ -11,4 +11,6 @@
     <string name="home_screen_widget">Home Screen Widget</string>
     <string name="total_manual_update">Total Manual Update</string>
     <string name="total_auto_update">Total_auto_update</string>
+    <string name="start_alarm_service">Start Alarm Service</string>
+    <string name="stop_alarm_service">Stop Alarm Service</string>
 </resources>

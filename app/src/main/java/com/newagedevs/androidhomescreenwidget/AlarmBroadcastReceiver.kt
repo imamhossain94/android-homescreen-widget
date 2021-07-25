@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.PowerManager
 import android.widget.RemoteViews
+import android.widget.Toast
 
 
 class AlarmBroadcastReceiver : BroadcastReceiver() {
@@ -35,6 +36,8 @@ class AlarmBroadcastReceiver : BroadcastReceiver() {
         val intent = Intent(context, AlarmBroadcastReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,System.currentTimeMillis(), (1000 * 60 * 1).toLong(), pendingIntent)
+
+        Toast.makeText(context, "Alarm Service Started!!", Toast.LENGTH_SHORT).show()
     }
 
     fun cancelAlarm(context: Context) {
@@ -42,6 +45,7 @@ class AlarmBroadcastReceiver : BroadcastReceiver() {
         val sender = PendingIntent.getBroadcast(context, 0, intent, 0)
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(sender)
+        Toast.makeText(context, "Alarm Service Canceled!!", Toast.LENGTH_SHORT).show()
     }
 
 
