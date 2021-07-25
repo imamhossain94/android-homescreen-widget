@@ -6,55 +6,140 @@
     android:background="@drawable/background"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home Screen Widget"
-        android:textColor="@color/white"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="0dp"
-        android:textStyle="bold"
-        android:textSize="18sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/text_background"
-        android:padding="15dp"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="12:17:42"
-            android:gravity="center"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:text="Home Screen Widget"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="18sp"/>
 
-        <ImageView
-            android:src="@android:drawable/divider_horizontal_dim_dark"
-            android:layout_width="fill_parent"
-            android:layout_height="5dp"
-            android:scaleType="fitXY"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="2dp"
-            android:paddingTop="2dp" />
-
-
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Manual Updated At"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="0dp"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:textSize="10sp"
+            android:padding="8dp"
+            android:text="≡"
             android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/text_background"
+            android:padding="8dp"
+            android:layout_marginEnd="7.5dp"
+            android:layout_marginStart="0dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="12:33"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="Last Update"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/text_background"
+            android:padding="8dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="7.5dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="Manual"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="Update Type"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/text_background"
+            android:padding="8dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="7.5dp">
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="12:33"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="Current Update"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

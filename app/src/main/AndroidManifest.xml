@@ -13,29 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidHomescreenWidget">
 
-
-
-        <receiver android:process=":remote" android:name=".Alarm"/>
-
-
-        <receiver android:name=".AutoStart"
+        <receiver
+            android:name=".Alarm"
+            android:process=":remote" />
+        <receiver
+            android:name=".AutoStart"
             android:enabled="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
         <service
             android:name=".YourService"
             android:enabled="true"
-            android:process=":remote" >
-        </service>
-
-
-
-
-
-
+            android:process=":remote"/>
 
         <receiver android:name=".AppWidget">
             <intent-filter>
@@ -45,12 +37,9 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/app_widget_info" />
-        </receiver>
-
-<!--        <service-->
-<!--            android:name=".AppService"-->
-<!--            android:enabled="true" />-->
-
+        </receiver> <!-- <service -->
+        <!-- android:name=".AppService" -->
+        <!-- android:enabled="true" /> -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,8 +47,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>
