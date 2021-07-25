@@ -19,12 +19,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Home Screen Widget"
+            android:text="@string/home_screen_widget"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="18sp"/>
 
         <TextView
+            android:id="@+id/widget_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
@@ -32,7 +33,7 @@
             android:focusable="true"
             android:gravity="center"
             android:padding="8dp"
-            android:text="≡"
+            android:text="@string/menu"
             android:textColor="@color/white"/>
 
     </LinearLayout>
@@ -40,7 +41,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -54,11 +56,12 @@
 
 
             <TextView
+                android:id="@+id/widget_last_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-light"
                 android:gravity="center"
-                android:text="12:33"
+                android:text="@string/dash"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -68,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-light"
                 android:gravity="center"
-                android:text="Last Update"
+                android:text="@string/last_update"
                 android:textColor="@color/white"
                 android:textSize="12sp"/>
 
@@ -86,11 +89,12 @@
 
 
             <TextView
+                android:id="@+id/widget_update_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-light"
                 android:gravity="center"
-                android:text="Manual"
+                android:text="@string/dash"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -100,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-light"
                 android:gravity="center"
-                android:text="Update Type"
+                android:text="@string/update_type"
                 android:textColor="@color/white"
                 android:textSize="12sp"/>
 
@@ -118,12 +122,12 @@
 
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/widget_current_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-light"
                 android:gravity="center"
-                android:text="12:33"
+                android:text="@string/dash"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -133,7 +137,85 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-light"
                 android:gravity="center"
-                android:text="Current Update"
+                android:text="@string/current_update"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="0dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/text_background"
+            android:padding="8dp"
+            android:layout_marginEnd="7.5dp"
+            android:layout_marginStart="0dp">
+
+
+            <TextView
+                android:id="@+id/widget_total_manual_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="@string/dash"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="@string/total_manual_update"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/text_background"
+            android:padding="8dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="7.5dp">
+
+
+            <TextView
+                android:id="@+id/widget_total_auto_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="@string/dash"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:text="@string/total_auto_update"
                 android:textColor="@color/white"
                 android:textSize="12sp"/>
 
@@ -145,7 +227,7 @@
 
 
     <TextView
-        android:id="@+id/button"
+        android:id="@+id/widget_manual_update_button"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="15dp"
@@ -153,7 +235,7 @@
         android:clickable="true"
         android:focusable="true"
         android:background="@drawable/button_background"
-        android:text="Refresh"
+        android:text="@string/manual_update"
         android:textColor="@color/white" />
 
 </LinearLayout>

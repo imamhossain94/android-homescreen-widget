@@ -43,8 +43,8 @@ class Alarm : BroadcastReceiver() {
 
 
 
-        view.setTextViewText(R.id.textView, lastUpdate + Calendar.getInstance().time.toString().subSequence(10, 19))
-        view.setOnClickPendingIntent(R.id.textView, pending)
+        view.setTextViewText(R.id.widget_current_update, lastUpdate + Calendar.getInstance().time.toString().subSequence(10, 19))
+        view.setOnClickPendingIntent(R.id.widget_current_update, pending)
 
         val theWidget = ComponentName(context, AppWidget::class.java)
         val manager = AppWidgetManager.getInstance(context)

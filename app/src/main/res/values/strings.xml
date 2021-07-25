@@ -2,4 +2,13 @@
     <string name="app_name">Android Homescreen Widget</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="manual_update">Manual Update</string>
+    <string name="current_update">Current Update</string>
+    <string name="dash">---</string>
+    <string name="update_type">Update Type</string>
+    <string name="last_update">Last Update</string>
+    <string name="menu">≡</string>
+    <string name="home_screen_widget">Home Screen Widget</string>
+    <string name="total_manual_update">Total Manual Update</string>
+    <string name="total_auto_update">Total_auto_update</string>
 </resources>

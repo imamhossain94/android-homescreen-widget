@@ -25,8 +25,8 @@ class AppService : Service() {
 
         val view = RemoteViews(packageName, R.layout.app_widget)
 
-        view.setTextViewText(R.id.textView, lastUpdate + Calendar.getInstance().time.toString().subSequence(10, 19))
-        view.setOnClickPendingIntent(R.id.textView,
+        view.setTextViewText(R.id.widget_current_update, lastUpdate + Calendar.getInstance().time.toString().subSequence(10, 19))
+        view.setOnClickPendingIntent(R.id.widget_current_update,
             PendingIntent.getService(applicationContext, 0, Intent(applicationContext, MainActivity::class.java), PendingIntent.FLAG_CANCEL_CURRENT))
 
         val theWidget = ComponentName(this, AppWidget::class.java)

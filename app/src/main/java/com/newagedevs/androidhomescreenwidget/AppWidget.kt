@@ -61,12 +61,12 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
     val widgetText = context.getString(R.string.appwidget_text)
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.app_widget)
-    views.setTextViewText(R.id.textView, "Loading")
+    views.setTextViewText(R.id.widget_current_update, "Loading")
 
     val pending = PendingIntent.getActivity(context, 0, Intent(context, MainActivity::class.java), 0)
 
     views.setOnClickPendingIntent(
-        R.id.textView,
+        R.id.widget_current_update,
         pending
     )
 
