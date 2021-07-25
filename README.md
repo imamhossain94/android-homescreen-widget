@@ -6,8 +6,8 @@ An Android application that use BroadcastReceiver to update home screen widget e
 ## Screenshots
 <p align="center">
   <img alt="Image" src="https://github.com/imamhossain94/android-homescreen-widget/blob/main/screenshots/image1.png" width="100%">
-  <img alt="image" src="https://github.com/imamhossain94/android-homescreen-widget/blob/main/screenshots/image2.png" width="48%"> &nbsp;
-  <img alt="image" src="https://github.com/imamhossain94/android-homescreen-widget/blob/main/screenshots/image3.png" width="48%">
+  <img alt="image" src="https://github.com/imamhossain94/android-homescreen-widget/blob/main/screenshots/image2.jpg" width="48%"> &nbsp;
+  <img alt="image" src="https://github.com/imamhossain94/android-homescreen-widget/blob/main/screenshots/image3.jpg" width="48%">
 </p>
 
 
